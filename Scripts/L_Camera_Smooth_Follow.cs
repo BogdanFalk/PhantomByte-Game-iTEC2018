@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class L_Camera_Smooth_Follow : MonoBehaviour {
 
+    public bool follow;
     public float interpVelocity;
     public float minDistance;
     public float followDistance;
@@ -13,15 +14,16 @@ public class L_Camera_Smooth_Follow : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        follow = true;
         targetPos = transform.position;
-        offset.y = 0.7f;
-        offset.x = 0.5f;
+        //offset.y = 0.7f;
+        //offset.x = 0.5f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target)
+        if (target&&follow)
         {
            
             Vector3 posNoZ = transform.position;
@@ -29,10 +31,10 @@ public class L_Camera_Smooth_Follow : MonoBehaviour {
 
             Vector3 targetDirection = (target.transform.position - posNoZ);
 
-            interpVelocity = targetDirection.magnitude * 5f;
+            interpVelocity = targetDirection.magnitude * 50f;
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
-            targetPos.y /= 2;
+           // targetPos.y /= 0.5f;
             transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.25f);
 
         }

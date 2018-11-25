@@ -33,28 +33,13 @@ public class L_Background_Parallax : MonoBehaviour {
         this.transform.Translate(new Vector3(-speed * targetVelocity, 0, 0) * Time.deltaTime);
         //set sprite is moving out of screen shift it to put clone in its place
         float width = getWidth();
-        print("WIDTH" + width);
-        //if (targetVelocity > 0)
-        //{
-        //    //shift right if player is moving right
-        //    if (initPos - this.transform.localPosition.x > width)
-        //    {
-        //        this.transform.Translate(new Vector3(width, 0, 0));
-        //    }
-        //}
-        //else
-        //{
-        //    //shift left if player moving left
-        //    if (initPos - this.transform.localPosition.x < 0)
-        //    {
-        //        this.transform.Translate(new Vector3(-width, 0, 0));
-        //    }
-        //}
+        
+        
     }
 
     float getWidth()
     {
-        //Get sprite width
+    
         return this.GetComponent<SpriteRenderer>().bounds.size.x;
     }
 }
